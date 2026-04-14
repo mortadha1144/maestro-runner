@@ -2,7 +2,7 @@
   "name": "maestro-runner",
   "displayName": "Maestro Runner",
   "description": "Run Maestro mobile UI tests from the command palette",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "mortadha",
   "engines": {
     "vscode": "^1.85.0"
@@ -27,6 +27,12 @@
           "type": "string",
           "default": "${workspaceFolder}/tests",
           "description": "Path to the directory containing Maestro test files (.yaml/.yml)",
+          "scope": "resource"
+        },
+        "maestro-runner.showTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the terminal when running a Maestro test. Set to false to run tests silently.",
           "scope": "resource"
         }
       }

@@ -15,6 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
 		const workspaceRoot = workspaceFolders[0].uri.fsPath;
 
 		const config = vscode.workspace.getConfiguration('maestro-runner');
+		const showTerminal = config.get<boolean>('showTerminal', true);
 		const rawPath = config.get<string>('testFilesPath', '${workspaceFolder}/tests');
 		const testDir = rawPath.replace(/\$\{workspaceFolder\}/g, workspaceRoot);
 
@@ -62,7 +63,9 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		}
 
-		maestroTerminal.show();
+		if (showTerminal) {
+			maestroTerminal.show();
+		}
 		maestroTerminal.sendText(`maestro test "${filePath}"`);
 	});
 
