@@ -1,0 +1,45 @@
+{
+  "name": "maestro-runner",
+  "displayName": "Maestro Runner",
+  "description": "Run Maestro mobile UI tests from the command palette",
+  "version": "0.0.1",
+  "publisher": "mortadha",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Testing"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "maestro-runner.runTestFile",
+        "title": "Run Maestro Test File",
+        "category": "Maestro"
+      }
+    ],
+    "configuration": {
+      "title": "Maestro Runner",
+      "properties": {
+        "maestro-runner.testFilesPath": {
+          "type": "string",
+          "default": "${workspaceFolder}/tests",
+          "description": "Path to the directory containing Maestro test files (.yaml/.yml)",
+          "scope": "resource"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3"
+  }
+}
